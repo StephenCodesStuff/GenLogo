@@ -1,8 +1,10 @@
 
-const fs = require('fs');
+// const fs = require('fs');
+const { writeFile } = require('fs/promises');
 const inquirer=require('inquirer');
 const {Circle, Square, Triangle} = require('./lib/shapes')
-const SVG = require('svg');
+const SVG = require("./lib/svg");
+// const SVG = require('svg');
 // text, color, shape and shape color
 // svg fill attribute
 
@@ -35,22 +37,44 @@ inquirer
     },
     
 ])
+.then((response) => {
+    let svg = new SVG();
+    svg.setText(response.text,response.textColor)
+    let shape;
+    switch (response.shape) {
+        case "triangle": 
+            shape= new Triangle()
+            break;
 
-// function pickShape(response){
-//     if (response.shape="square") {
-//         return Square
-//     } else if (response.shape="circle"){
-//         return Circle
-//     } else if (response.shape="triangle"){
-//         return Triangle
-//     }
-// } 
+        case "square":
+            shape= new Square()
+        
+        case "circle":
+            shape= new Circle()
+        
+        default: 
+            shape = new Triangle()
+            break;
+    }
+    shape.setColor(response.shapeColor);
+    svg.setShape(shape);
+    console.log(svg.render())
+    return writeFile('./dist/logo.svg', svg.render());
+})
 
-// .then((response) => 
-// fs.writeFile("logo.svg",Shape (response),(err)=>{
-//     err ? console.log(err) : console.log("File Made")
-// })
-// )
+.then(() => {
+    // This function will only run after the asynchronous call to writeFile has resolved.
+    console.log('Generated logo.svg');
+  });
+
+// .then((svg) => fs.writeFile("logo.svg", svg.render(), (err) => {
+//     if (err)
+//     console.log(err);
+//   else {
+//     console.log("File written successfully\n");}
+// }));
+
+
 
 
 
