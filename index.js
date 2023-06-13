@@ -1,12 +1,14 @@
 
 const fs = require('fs');
-const {prompt}=require('inquirer');
+const inquirer=require('inquirer');
 const {Circle, Square, Triangle} = require('./lib/shapes')
-
+const SVG = require('svg');
 // text, color, shape and shape color
 // svg fill attribute
 
-prompt([
+
+inquirer
+.prompt([
     {
         type:'input',
         name: 'text',
@@ -21,23 +23,36 @@ prompt([
 
     },
     {
+        type: 'input',
+        name: 'shapeColor',
+        message: 'What color do you want your shape',
+    },
+    {
         type:'list',
         name:'shape',
         message:'What shape will your logo be',
         choices: ['triangle', 'square', 'cirle']
     },
-    {
-        type: 'input',
-        name: 'shapeColor',
-        message: 'What color do you want your shape',
-    },
-
+    
 ])
-.then((response) =>
-fs.writeFile("readme.md",generateMarkdown (response),(err)=>{
-    err ? console.log(err) : console.log("File Made")
-})
-);
+
+// function pickShape(response){
+//     if (response.shape="square") {
+//         return Square
+//     } else if (response.shape="circle"){
+//         return Circle
+//     } else if (response.shape="triangle"){
+//         return Triangle
+//     }
+// } 
+
+// .then((response) => 
+// fs.writeFile("logo.svg",Shape (response),(err)=>{
+//     err ? console.log(err) : console.log("File Made")
+// })
+// )
+
+
 
 
 
