@@ -29,7 +29,7 @@ inquirer
         type:'list',
         name:'shape',
         message:'What shape will your logo be',
-        choices: ['triangle', 'square', 'cirle']
+        choices: ['triangle', 'square', 'circle']
     },
     
 ])
