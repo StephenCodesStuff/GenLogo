@@ -33,7 +33,8 @@
   ![image](https://github.com/StephenCodesStuff/GenLogo/assets/122505441/64cd6c87-4c0f-440a-9d44-ab923ba7fa3e)
   Logo is generated in the dist folder.
   ![image](https://github.com/StephenCodesStuff/GenLogo/assets/122505441/92db2e33-f5c2-4384-bc2b-4ce08eed2090)
-
+  Video of the application in use.
+  https://watch.screencastify.com/v/eG3KgiGuwRv0S0tlEe3y
   
   
   ## License
@@ -45,6 +46,7 @@
     
   ## Contributing
   Written by Stephen Cook
+  Test code was provided by EDX 
   
   
   ## Tests
